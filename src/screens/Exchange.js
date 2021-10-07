@@ -2,7 +2,10 @@ import { View, Text, ScrollView, TouchableOpacity, ScrollViewBase, ImageBackgrou
 import React from "react";
 import Neo from '../assets/Icons/neo coin.svg'
 
+
+
 const Exchange = () => {
+    
 
     return (
 

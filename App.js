@@ -1,19 +1,26 @@
 import React from "react";
-import { ImageBackground, View, SafeAreaView } from "react-native";
+import { ImageBackground, View, SafeAreaView, Text  } from "react-native";
 import Tabs from "./src/config/Tabs";
 import bg1 from './src/assets/backgroundImage/bg1.png'
 import 'react-native-gesture-handler';
-
+import { Provider } from 'react-redux';
+import store from "./src/Stores/Tabs/store";
 
 function App() {
-  return (
+
+  return ( 
 
 
-    <SafeAreaView style={{ flex: 1 , backgroundColor : '#181818'}}>
+    <SafeAreaView style={{ flex: 1, backgroundColor: '#181818' }}>
 
-      <Tabs />
-      
+      <Provider store={store}>
+       
+        <Tabs />
+
+      </Provider>
+
     </SafeAreaView>
+
 
 
 

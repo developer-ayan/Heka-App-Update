@@ -11,13 +11,6 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 
-
-
-
-
-
-
-
 const Setting = () => {
 
     return (

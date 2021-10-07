@@ -1,5 +1,5 @@
 import { View, Text, ScrollView, Button, TouchableOpacity, ImageBackground } from 'react-native'
-import React from "react";
+import React, { useEffect } from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import AntDesign from 'react-native-vector-icons/AntDesign';
@@ -18,22 +18,49 @@ import Dash from '../assets/Icons/dash coin.svg'
 import Ethereum from '../assets/Icons/ethereum.svg'
 import Neo from '../assets/Icons/neo coin.svg'
 
+import { connect } from 'react-redux';
+import { useFocusEffect } from '@react-navigation/native';
+import marketReducer from '../Stores/Tabs/marketReducer';
+import { getHoldings } from '../Stores/Tabs/marketAction'
 
 
 
 
+const Dashboard = ({ getHoldings, getCoinMarket, myHoldings }) => {
 
 
-const Dashboard = () => {
+    useFocusEffect(
+        React.useCallback(() => {
+            getHoldings()
+        }, [])
+    )
+
+    // let dummy = dummyData.holdings
+    // console.log(dummy)
+
+
+    // console.log(myHoldings)
+
+    let totalWallet = 'ayan'
+
+
 
 
     return (
 
-        <ScrollView style={{flex  : 1 , backgroundColor: '#181818'  }}>
+        <ScrollView style={{ flex: 1, backgroundColor: '#181818' }}>
 
 
             <View >
 
+                <View>
+                    {/* {
+                        myHoldings && myHoldings.holdings && myHoldings.holdings.map((item)=>{
+                            <Text style = {{marginTop : 200}}>{item.id}</Text>
+                        })
+                    } */}
+                
+                </View>
 
                 <View style={{ padding: 20 }}>
                     <Text style={{ textAlign: 'center', fontSize: 25, color: 'white', fontWeight: 'bold' }}>Dashboard</Text>
@@ -43,7 +70,7 @@ const Dashboard = () => {
 
                     <View style={{ justifyContent: 'center', alignItems: 'center', flexDirection: 'row' }}>
                         <View>
-                            <Text style={{ fontSize: 40, color: '#e3a902', fontWeight: 'bold' }}>$53,250</Text>
+                            <Text style={{ fontSize: 40, color: '#e3a902', fontWeight: 'bold' }}>{totalWallet}</Text>
                         </View>
 
                         <View>
@@ -187,6 +214,10 @@ const Dashboard = () => {
                     </View>
                 </View>
 
+                <View>
+                    {/* <Image source = {{ uri: item.image}}/> */}
+                </View>
+
 
 
             </View>
@@ -194,4 +225,37 @@ const Dashboard = () => {
     )
 }
 
-export default Dashboard;
+// export default Dashboard;
+
+
+function mapStateToProps() {
+    return {
+        myHoldings: marketReducer.myHoldings,
+        coins: marketReducer.coins
+    }
+}
+
+function mapDispatchToProps(dispatch) {
+    return {
+        getHoldings: (
+            holdings, currency, coinList, orderBy,
+            sparkline, priceChangeperc, perPage, page
+        ) => {
+            return dispatch(getHoldings(
+                holdings, currency, coinList, orderBy,
+                sparkline, priceChangeperc, perPage, page
+            ))
+        },
+        // getCoinMarket: (
+        //     currency, coinList, orderBy,
+        //     sparkLine, priceChangeperc, perPage, page
+
+        // ) => {
+        //     return dispatch(getCoinMarket(
+        //         currency, coinList, orderBy,
+        //         sparkLine, priceChangeperc, perPage, page
+        //     ))
+        // }
+    }
+}
+export default connect(mapStateToProps, mapDispatchToProps)(Dashboard);

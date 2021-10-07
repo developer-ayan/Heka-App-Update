@@ -2,10 +2,13 @@ import React from "react";
 import { View } from "react-native";
 import { createMaterialBottomTabNavigator } from '@react-navigation/material-bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
+// import { connect } from "react-redux";
+// import { setTradeModalVisibilty } from "../Stores/Tabs/tabAction";
 import Dashboard from '../screens/Dashboard'
 import Exchange from '../screens/Exchange'
 import Stats from '../screens/Stats'
 import Setting from '../screens/Setting'
+import Profile from '../screens/Profile'
 import Login from '../Login/SignUpAuth/Login';
 import SignUp from '../Login/SignUpAuth/SignUp'
 import Icons from 'react-native-vector-icons/FontAwesome';
@@ -28,9 +31,7 @@ function Tabs(props) {
             <Tab.Navigator
                 initialRouteName="Dashboard"
                 tabBarPosition='bottom'
-
                 screenOptions={{
-                    // activeTintColor: 'red',
                     tabBarActiveTintColor: '#e5a800',
                     tabBarLabelStyle: { fontSize: 10, },
                     tabBarStyle: {
@@ -42,8 +43,6 @@ function Tabs(props) {
                     },
                 }}
 
-             
-
             >
                 <Tab.Screen
                     name="Dashboard"
@@ -51,11 +50,13 @@ function Tabs(props) {
                     options={{
                         tabBarIcon: ({ color, focused }) => (
                             <Ionicons style={{}}
+                                focused={focused}
                                 name={'home'}
                                 color={color}
                                 size={23}
                             />
-                        )
+                        ),
+
                     }}
 
 
@@ -64,8 +65,8 @@ function Tabs(props) {
                     name="Exchange"
                     component={Exchange}
                     options={{
-                        
-                        
+
+
                         tabBarIcon: ({ color, focused }) => (
                             <Fontisto style={{}}
                                 name={'arrow-swap'}
@@ -73,7 +74,8 @@ function Tabs(props) {
 
                                 size={23}
                             />
-                        )
+                        ),
+                        tabBarLabel: 'Updates'
                     }}
                 />
                 <Tab.Screen
@@ -90,7 +92,7 @@ function Tabs(props) {
                     }}
                 />
                 <Tab.Screen
-                    name="Setting"
+                    name='Setting'
                     component={Setting}
                     options={{
                         tabBarIcon: ({ color, focused }) => (
@@ -103,6 +105,10 @@ function Tabs(props) {
                         )
                     }}
                 />
+
+
+
+
             </Tab.Navigator>
         </NavigationContainer>
 
@@ -110,3 +116,18 @@ function Tabs(props) {
 }
 
 export default Tabs;
+
+
+// function mapStateToProps(state) {
+//     return {
+//         isTradeModalVisible: state.tabReducer.isTradeModalVisible
+//     }
+// }
+
+// function mapDispatchToProps(dispatch) {
+//     return {
+//         setTradeModalVisibilty: (isVisible) => { return dispatch(setTradeModalVisibilty(isVisible)) }
+//     }
+// }
+
+// export default connect(mapStateToProps , mapDispatchToProps )(Tabs);
