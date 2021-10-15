@@ -1,73 +1,112 @@
-import { View, Text, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from "react";
-import auth from '@react-native-firebase/auth';
+import { View, TouchableOpacity, Text, TextInput ,ScrollView } from 'react-native'
+import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
+import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
+import Entypo from 'react-native-vector-icons/Entypo';
+import auth from '@react-native-firebase/auth'
 
 
-const SignUp = ({navigation}) => {
 
-    const [ email , setEmail  ] = useState('')
-    const [password,setPassword] = useState("");
-    
-    auth()
-            .createUserWithEmailAndPassword(email,password)
+
+function SignUp({navigation}) {
+    const [selectedLanguage, setSelectedLanguage] = useState();
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("")
+    const [username, setUsername] = useState("")
+
+    // <View style={{ width: '100%', alignItems: 'center', marginTop: 20 }}>
+    //     <TextInput onChangeText={(text)=>setEmail(text)} keyboardType={'email-address'} style={{ width: '80%', borderWidth: 1, borderRadius: 100, borderColor: 'blue', paddingLeft: 25, fontSize: 17 }} placeholder="User Email" />
+    // </View>
+
+    const register = () => {
+        auth()
+            .createUserWithEmailAndPassword(email, password,username)
             .then(() => {
-              console.log('User account created & signed in!');
+                console.log('User account created & signed in!');
+                alert('User account created & signed in')
             })
+
             .catch(error => {
-              if (error.code === 'auth/email-already-in-use') {
-                console.log('That email address is already in use!');
-              }
-          
-              if (error.code === 'auth/invalid-email') {
-                console.log('That email address is invalid!');
-              }
-          
-              console.error(error);
+                if (error.code === 'auth/email-already-in-use') {
+                    alert('That email address is already in use!');
+                }
+
+                if (error.code === 'auth/invalid-email') {
+                    alert('That email address is invalid!');
+                }
+
+                
             });
-        
+        // console.log(email)
+        // console.log(password)
+    }
 
     return (
+        <ScrollView style = {{flex :1 , backgroundColor : '#181818' }}>
+            <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#181818' }}>
 
-        <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#181818' }}>
-            <View >
-                <Text style={{ fontSize: 25, color: '#d2a56e', marginTop: 100 , fontWeight : 'bold' }}>Sign Up</Text>
-            </View>
-
-
-
-            <View style={{ width: '80%', marginVertical: 20, backgroundColor: 'white' , borderRadius : 20  }}>
-                <TextInput style={{ fontSize: 15, padding: 20, width: '80%', fontWeight : 'bold' }} placeholder='Enter Username' />
-            </View>
-
-            <View style={{ width: '80%', marginBottom: 20, backgroundColor: 'white'  , borderRadius : 20 }}>
-                <TextInput onChangeText={(text)=>setEmail(text)}keyboardType={"email-address"}  style={{ fontSize: 15, padding: 20, width: '80%', fontWeight : 'bold' }} placeholder='Enter Email' />
-            </View>
-
-            <View style={{ width: '80%', marginBottom: 20, backgroundColor: 'white' , borderRadius : 20 }}>
-                <TextInput onChangeText={(password)=>setPassword(password)} secureTextEntry={true} style={{ fontSize: 15, padding: 20, width: '80%' , fontWeight : 'bold'}} placeholder='Enter Password' />
-            </View>
-
-
-            <View style={{ width: "80%" }}>
-                <TouchableOpacity style={{
-                    backgroundColor: '#d2a56e', borderRadius: 20, padding: 10, justifyContent: 'center'
-                }}><Text style={{ fontSize: 20, textAlign: 'center', padding: 10, color: 'white', fontWeight : 'bold' }}>Sign Up</Text></TouchableOpacity>
-            </View>
-
-            <View style={{ flexDirection: 'row', marginTop: 20 }}>
-                <View style={{ padding: 10 }}>
-                    <Text style={{ color: "white" }}>Do You Have Account</Text>
+                <View style={{ backgroundColor: '#d2a56e', width: '100%', borderBottomLeftRadius: 80, padding: 10 }}>
+                    <View style={{ height: 180, justifyContent: "center", alignItems: "center" }}>
+                        <View ><FontAwesome5 name='user-alt' style={{ color: 'white', fontSize: 90 }} /></View>
+                    </View>
+                    <View style={{ justifyContent: "flex-end", marginRight: 5 }}>
+                        <Text style={{ textAlign: "right", color: 'white', fontSize: 20, fontWeight: "bold", paddingBottom: 10 }}>
+                            Sign Up
+                        </Text>
+                    </View>
                 </View>
-                <View>
-                    <TouchableOpacity onPress = {() => navigation.navigate('Login')} style={{}}><Text style={{ color: 'skyblue', padding: 10 , fontWeight : 'bold' }}>Login</Text></TouchableOpacity>
+
+                <View style={{ width: '80%', marginTop: 50, backgroundColor: 'white', flexDirection: "row", alignItems: "center", height: 60, borderRadius: 25 }}>
+                    <View>
+                        <Entypo name="user" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
+                    </View>
+                    <View style={{ width: '70%' }}>
+                        <TextInput style = {{borderWidth : 1 , borderColor : 'red'}} onChangeText={(text)=>setUsername(text)} style={{ fontSize: 15 }} placeholder='Username' />
+                    </View>
                 </View>
+
+                <View style={{ width: '80%', marginTop: 10, backgroundColor: 'white', flexDirection: "row", alignItems: "center", height: 60, borderRadius: 25 }}>
+                    <View>
+                        <MaterialCommunityIcons name="email" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
+                    </View>
+                    <View style={{ width: '70%' }}>
+                        <TextInput onChangeText={(text)=>setEmail(text)} keyboardType = 'email-address' style={{ fontSize: 15 }} placeholder='Email' />
+                    </View>
+                </View>
+
+                <View style={{ width: '80%', marginTop: 10, backgroundColor: 'white', flexDirection: "row", alignItems: "center", height: 60, borderRadius: 25 }}>
+                    <View>
+                        <MaterialCommunityIcons name="key" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
+                    </View>
+                    <View style={{ width: '70%' }}>
+                        <TextInput onChangeText={(text)=>setPassword(text)} style={{ fontSize: 15 }} placeholder='Password' />
+                    </View>
+                </View>
+                {/* <View style={{ borderWidth: 1, borderColor: 'red', width: '80%', marginBottom: 20, backgroundColor: 'white' }}>
+    <TextInput style={{ fontSize: 15, padding: 15, width: '80%' }} placeholder='Enter Password' />
+</View> */}
+
+
+                <View style={{ width: "80%", marginTop: 30 }}>
+                    <TouchableOpacity onPress={register} style={{
+                        backgroundColor: '#d2a56e', borderRadius: 25, padding: 10, justifyContent: 'center'
+                    }}><Text style={{ fontSize: 20, textAlign: 'center', padding: 10, color: 'white', }}>SignUp</Text></TouchableOpacity>
+                </View>
+
+                <View style={{ flexDirection: 'row', marginTop: 30 }}>
+                    <View style={{ padding: 10 }}>
+                        <Text style={{ color: "white" }}>Have an account ? </Text>
+                    </View>
+                    <View>
+                        <TouchableOpacity onPress={() => navigation.navigate('Login')}><Text style={{ color: 'skyblue', padding: 10 }}>Login</Text></TouchableOpacity>
+                    </View>
+                </View>
+
+
+
+
             </View>
-
-
-
-
-        </View>
-
+        </ScrollView>
     )
 }
 

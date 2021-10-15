@@ -5,14 +5,14 @@ import Neo from '../assets/Icons/neo coin.svg'
 
 
 const Exchange = () => {
-    
+
 
     return (
 
         // <ScrollView style = {{flex : 1 , backgroundColor :' red'}}>
 
-           
-        <ScrollView style={{flex  : 1 , backgroundColor: '#181818'  }}>
+
+        <ScrollView style={{ flex: 1, backgroundColor: '#181818' }}>
 
 
             <View>
@@ -28,7 +28,7 @@ const Exchange = () => {
                 </View>
 
                 {/* Exchange cards */}
-
+                {/* 
                 <View style={{ flexDirection: 'row', justifyContent: 'space-between', padding: 10, borderWidth: 1, borderBottomColor: "#707070", height: 70, alignItems: 'center' }}>
 
                     <View style={{ flexDirection: 'row', height: 70, alignItems: 'center' }}>
@@ -47,67 +47,88 @@ const Exchange = () => {
                         <Text style={{ color: '#70be7a', fontWeight: 'bold' }}>+0.3205763432 BTC</Text>
                         <Text style={{ color: 'white', textAlign: 'right', fontWeight: 'bold' }}>+4325 USD</Text>
                     </View>
-                </View>
+                </View> */}
 
                 {/* calculations */}
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 30 }}>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>1</Text></TouchableOpacity>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 40 }}>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>1</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>2</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>2</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>3</Text></TouchableOpacity>
-                    </View>
-                </View>
-
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 10 }}>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>4</Text></TouchableOpacity>
-                    </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>5</Text></TouchableOpacity>
-                    </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>6</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>3</Text></TouchableOpacity>
                     </View>
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 10 }}>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>7</Text></TouchableOpacity>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 20 }}>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>4</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>8</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>5</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>9</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>6</Text></TouchableOpacity>
                     </View>
                 </View>
 
-                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 10 }}>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>.</Text></TouchableOpacity>
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 20 }}>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>7</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>0</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>8</Text></TouchableOpacity>
                     </View>
-                    <View>
-                        <TouchableOpacity style={{ padding: 25, backgroundColor: "#3c3638", borderRadius: 20 }}><Text style={{ fontWeight: 'bold', fontSize: 20, color: "white" }}>x</Text></TouchableOpacity>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>9</Text></TouchableOpacity>
+                    </View>
+                </View>
+
+                <View style={{ flexDirection: 'row', justifyContent: 'space-around', paddingHorizontal: 20, marginTop: 20 }}>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>.</Text></TouchableOpacity>
+                    </View>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>0</Text></TouchableOpacity>
+                    </View>
+                    <View style={{ backgroundColor: '#3c3638', width: 55, height: 55, borderRadius: 15, alignItems: 'center', justifyContent: 'center' }}>
+                        <TouchableOpacity><Text style={{ fontWeight: 'bold', fontSize: 15, color: "white", }}>x</Text></TouchableOpacity>
                     </View>
                 </View>
 
                 {/* Countinue Button */}
 
 
-                <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical: 20 }}>
+                {/* <View style={{ justifyContent: 'center', alignItems: 'center', marginVertical: 20 }}>
                     <TouchableOpacity style={{
-                        backgroundColor: '#d2a56e', borderRadius: 20, padding: 10, width: "80%", justifyContent: 'center'
+                        backgroundColor: '#d2a56e', borderRadius: 20, padding: 10, width: "75%", justifyContent: 'center',shadowColor: "#000",
+                        shadowOffset: {
+                            width: 0,
+                            height: 4,
+                        },
+                        shadowOpacity: 0.30,
+                        shadowRadius: 4.65,
+                        
+                        elevation: 8,
                     }}><Text style={{ fontSize: 20, textAlign: 'center', padding: 10, color: 'white', }}>Continue</Text></TouchableOpacity>
-                </View>
+                </View> */}
 
+
+                <View style={{ justifyContent: 'center', alignItems: 'center' , marginTop : 30 }}>
+                    <View style={{backgroundColor: '#d2a56e', width: '76%', justifyContent: 'center', alignItems: 'center', borderRadius: 10, padding: 20}}>
+                        <TouchableOpacity style = {{
+                             shadowColor: '#171717',
+                             shadowOffset: {width: -2, height: 4},
+                             shadowOpacity: 0.2,
+                             shadowRadius: 3,
+                        }}>
+                            <Text style = {{fontSize : 15 ,color : 'white'}}>Countinue</Text>
+                        </TouchableOpacity>
+                    </View>
+                </View>
 
             </View>
 

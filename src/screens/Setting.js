@@ -1,4 +1,4 @@
-import { View, Text, ImageBackground, ScrollView } from 'react-native'
+import { View, Text, ImageBackground, ScrollView, TouchableOpacity } from 'react-native'
 import React from "react";
 import Icon from 'react-native-vector-icons/FontAwesome';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
@@ -10,11 +10,17 @@ import Fontisto from 'react-native-vector-icons/Fontisto';
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
+import auth from '@react-native-firebase/auth';
 
 const Setting = () => {
+const signOut = () => {
+    auth()
+      .signOut()
+      .then(() => console.log('User signed out!'));
+}
 
     return (
-        <ScrollView style={{flex  : 1 , backgroundColor: '#181818'  }}>
+        <ScrollView style={{ flex: 1, backgroundColor: '#181818' }}>
 
 
             <View>
@@ -165,6 +171,19 @@ const Setting = () => {
                         </View>
                         <View style={{ marginLeft: 30 }}>
                             <Text style={{ fontWeight: 'bold', color: 'white' }}>Payments</Text>
+                        </View>
+                    </View>
+
+                    {/* SignOut */}
+
+                    <View style={{ flexDirection: 'row', alignItems: 'center', borderWidth: 1, borderColor: 'red', padding: 10, marginHorizontal: 15, borderRadius: 10, marginBottom: 10 }}>
+                        <View style={{ alignItems: 'center', justifyContent: 'center', height: 40, width: 40, backgroundColor: '#d2a56e', borderRadius: 50 }}>
+                            <MaterialIcons name='payment' size={20} style={{ color: '#37373b' }} />
+                        </View>
+                        <View style={{ marginLeft: 30 }}>
+                            <TouchableOpacity onPress = {signOut}>
+                                <Text style={{ fontWeight: 'bold', color: 'white' }}>Payments</Text>
+                            </TouchableOpacity>
                         </View>
                     </View>
 
