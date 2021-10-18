@@ -1,19 +1,10 @@
-// import { combineReducers } from 'redux';
+import { combineReducers } from 'redux';
+import markerReducer from './marketReducer';
+import signupReducer from './signupReducer';
 
-// import tabReducer from './tabReducer';
-// import marketReducer from './marketReducer';
+const rootReducer = combineReducers({
+    markerReducer,
+    signupReducer,
+})
 
-
-// export default combineReducers({
-//     tabReducer,
-//     marketReducer
-//  })
-
-// import { combineReducers } from 'redux'
-// import 
-
-// const rootReducer = combineReducers({
-//     reducer
-// })
-
-// export default rootReducer
+export default rootReducer

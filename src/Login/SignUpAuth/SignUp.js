@@ -1,48 +1,39 @@
-import React, { useState } from "react";
-import { View, TouchableOpacity, Text, TextInput ,ScrollView } from 'react-native'
+import React, { useEffect, useState } from "react";
+import { View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
-import auth from '@react-native-firebase/auth'
+import { signUp } from "../../Stores/Tabs/signupAction";
+import {  useDispatch} from "react-redux";
 
 
-
-
-function SignUp({navigation}) {
-    const [selectedLanguage, setSelectedLanguage] = useState();
+function SignUp({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
     const [username, setUsername] = useState("")
+    const dispatch = useDispatch();
+    
+    const signup_user = () => {
+        let user = {
+            username,
+            email,
+            password
+        }
+        dispatch(signUp(user))
+    }
+
+
+   
+
 
     // <View style={{ width: '100%', alignItems: 'center', marginTop: 20 }}>
     //     <TextInput onChangeText={(text)=>setEmail(text)} keyboardType={'email-address'} style={{ width: '80%', borderWidth: 1, borderRadius: 100, borderColor: 'blue', paddingLeft: 25, fontSize: 17 }} placeholder="User Email" />
     // </View>
 
-    const register = () => {
-        auth()
-            .createUserWithEmailAndPassword(email, password,username)
-            .then(() => {
-                console.log('User account created & signed in!');
-                alert('User account created & signed in')
-            })
 
-            .catch(error => {
-                if (error.code === 'auth/email-already-in-use') {
-                    alert('That email address is already in use!');
-                }
-
-                if (error.code === 'auth/invalid-email') {
-                    alert('That email address is invalid!');
-                }
-
-                
-            });
-        // console.log(email)
-        // console.log(password)
-    }
 
     return (
-        <ScrollView style = {{flex :1 , backgroundColor : '#181818' }}>
+        <ScrollView style={{ flex: 1, backgroundColor: '#181818' }}>
             <View style={{ flex: 1, alignItems: 'center', backgroundColor: '#181818' }}>
 
                 <View style={{ backgroundColor: '#d2a56e', width: '100%', borderBottomLeftRadius: 80, padding: 10 }}>
@@ -61,7 +52,7 @@ function SignUp({navigation}) {
                         <Entypo name="user" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
                     </View>
                     <View style={{ width: '70%' }}>
-                        <TextInput style = {{borderWidth : 1 , borderColor : 'red'}} onChangeText={(text)=>setUsername(text)} style={{ fontSize: 15 }} placeholder='Username' />
+                        <TextInput style={{ borderWidth: 1, borderColor: 'red' }} onChangeText={(text) => setUsername(text)} style={{ fontSize: 15 }} placeholder='Username' />
                     </View>
                 </View>
 
@@ -70,7 +61,7 @@ function SignUp({navigation}) {
                         <MaterialCommunityIcons name="email" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
                     </View>
                     <View style={{ width: '70%' }}>
-                        <TextInput onChangeText={(text)=>setEmail(text)} keyboardType = 'email-address' style={{ fontSize: 15 }} placeholder='Email' />
+                        <TextInput onChangeText={(text) => setEmail(text)} keyboardType='email-address' style={{ fontSize: 15 }} placeholder='Email' />
                     </View>
                 </View>
 
@@ -79,7 +70,7 @@ function SignUp({navigation}) {
                         <MaterialCommunityIcons name="key" size={25} style={{ color: '#d2a56e', marginRight: 10, marginLeft: 20, borderWidth: 1, borderRightColor: '#e5e5e5', borderLeftColor: 'white', borderBottomColor: 'white', borderTopColor: 'white', paddingRight: 10, paddingVertical: 5 }} />
                     </View>
                     <View style={{ width: '70%' }}>
-                        <TextInput onChangeText={(text)=>setPassword(text)} style={{ fontSize: 15 }} placeholder='Password' />
+                        <TextInput onChangeText={(text) => setPassword(text)} style={{ fontSize: 15 }} placeholder='Password' />
                     </View>
                 </View>
                 {/* <View style={{ borderWidth: 1, borderColor: 'red', width: '80%', marginBottom: 20, backgroundColor: 'white' }}>
@@ -88,7 +79,7 @@ function SignUp({navigation}) {
 
 
                 <View style={{ width: "80%", marginTop: 30 }}>
-                    <TouchableOpacity onPress={register} style={{
+                    <TouchableOpacity onPress={signup_user} style={{
                         backgroundColor: '#d2a56e', borderRadius: 25, padding: 10, justifyContent: 'center'
                     }}><Text style={{ fontSize: 20, textAlign: 'center', padding: 10, color: 'white', }}>SignUp</Text></TouchableOpacity>
                 </View>

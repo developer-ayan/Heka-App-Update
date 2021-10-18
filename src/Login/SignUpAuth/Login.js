@@ -2,28 +2,26 @@ import React, { useState } from "react";
 import { View, TouchableOpacity, Text, TextInput, ScrollView } from 'react-native'
 import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialCommunityIcons from 'react-native-vector-icons/MaterialCommunityIcons';
-import auth from '@react-native-firebase/auth'
-
-
+import { login } from "../../Stores/Tabs/signupAction";
+import {  useDispatch} from "react-redux";
 
 function Login({ navigation }) {
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("")
+    const dispatch = useDispatch();
+
     const SignIn = () => {
-        auth().signInWithEmailAndPassword(email, password)
-            .then(() => {
-                alert('Your acc Has been logged')
-                navigation.navigate('Tabs')
-            })
-            .catch(error => {
-                if (error.code === 'auth/operation-not-allowed') {
-                    console.log('Enable anonymous in your firebase console.');
-                }
-
-                // console.error(error);
-                alert('wrong password')
-            });
-
+        let user = {
+            email,
+            password
+        }
+        dispatch(login(user))
+        .then(()=>{
+            navigation.navigate('Tabs')
+        }).catch((err)=>{
+            alert(err)
+        })
+      
     }
     return (
         <ScrollView style={{ flex: 1, backgroundColor: '#181818' }}>

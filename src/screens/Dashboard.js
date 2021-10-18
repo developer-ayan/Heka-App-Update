@@ -19,14 +19,16 @@ import Ethereum from '../assets/Icons/ethereum.svg'
 import Neo from '../assets/Icons/neo coin.svg'
 import { useDispatch, useSelector } from 'react-redux';
 import { getHoldings } from '../Stores/Tabs/marketAction';
-import { Colors } from 'react-native/Libraries/NewAppScreen';
 
 
 
 
 const Dashboard = () => {
 
-    let state = useSelector(state => state)
+    let state = useSelector(state => state.markerReducer)
+    
+
+
     let dispatch = useDispatch()
 
     useEffect(() => {

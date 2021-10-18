@@ -1,7 +1,7 @@
+// import { Provider } from 'react-redux';
+// import store from "./src/Stores/Tabs/store";
 import React from "react";
 import { ImageBackground, View, SafeAreaView, Text } from "react-native";
-import { Provider } from "react-redux";
-import store from './src/Stores/Tabs/store'
 import 'react-native-gesture-handler';
 import Dashboard from "./src/screens/Dashboard";
 import Exchange from "./src/screens/Exchange";
@@ -27,7 +27,6 @@ const Tab = createMaterialTopTabNavigator();
 function App() {
   function Tabs() {
     return (
-  
       <Tab.Navigator style = {{backgroundColor : '#181818'}}
         initialRouteName="Dashboard"
         tabBarPosition='bottom'
@@ -115,7 +114,6 @@ function App() {
 
     <SafeAreaView style={{ flex: 1, backgroundColor: '#181818' }}>
 
-      <Provider store={store}>
 
         <NavigationContainer>
           <Stack.Navigator screenOptions = {{
@@ -126,11 +124,13 @@ function App() {
             <Stack.Screen name="Tabs" component={Tabs} />
 
 
+
+
+
           </Stack.Navigator>
         </NavigationContainer>
 
 
-      </Provider>
 
     </SafeAreaView>
 
@@ -144,5 +144,3 @@ function App() {
 }
 
 export default App;
-// import { Provider } from 'react-redux';
-// import store from "./src/Stores/Tabs/store";

@@ -1,5 +1,4 @@
 import axios from "axios";
-import { useState } from "react";
 
 export const GET_HOLDING_BEGIN = 'GET_HOLDING_BEGIN';
 export const GET_HOLDING_SUCCESS = 'GET_HOLDING_SUCCESS';
@@ -46,6 +45,7 @@ let apiUrl = `https://api.coingecko.com/api/v3/coins/markets?vs_currency=usd&ids
                 }
             });
             if (response.status == 200) {
+
                 let myHoldings = response.data
 
                 dispatch(getHoldingsSuccess(response.data))

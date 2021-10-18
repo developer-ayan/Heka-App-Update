@@ -11,8 +11,13 @@ import FontAwesome5 from 'react-native-vector-icons/FontAwesome5';
 import MaterialIcons from 'react-native-vector-icons/MaterialIcons';
 import Entypo from 'react-native-vector-icons/Entypo';
 import auth from '@react-native-firebase/auth';
+import { useSelector ,useDispatch } from 'react-redux';
+
 
 const Setting = () => {
+  
+    let user = useSelector(userState => userState.signupReducer.user)
+    console.log(user)
 const signOut = () => {
     auth()
       .signOut()
@@ -24,7 +29,7 @@ const signOut = () => {
 
 
             <View>
-
+ <Text style = {{color : 'white'}}></Text>
                 <View>
                     <Text style={{ textAlign: 'center', fontSize: 25, color: 'white', fontWeight: 'bold', margin: 19 }}>Setting</Text>
                 </View>
@@ -59,7 +64,7 @@ const signOut = () => {
 
                     <View>
                         <Text style={{ color: 'white', fontSize: 16, textAlign: 'center', paddingTop: 20 }}>
-                            Muhammad Ayan
+                            {user.username}
                         </Text>
                     </View>
 
